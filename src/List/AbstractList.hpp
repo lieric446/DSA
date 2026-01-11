@@ -1,8 +1,9 @@
 #ifndef ABSTRACT_LIST_HPP
 #define ABSTRACT_LIST_HPP
 
-#include "List.hpp"
 #include <stdexcept>
+
+#include "List.hpp"
 
 template <typename T>
 class AbstractList : public List<T> {
@@ -20,28 +21,9 @@ protected:
     }
 
 public:
-    void addFirst(const T& element) override {
-        this->add(0, element);
-    }
-
-    void addLast(const T& element) override {
+    using List<T>::add;
+    void add(const T& element) override {
         this->add(this->size(), element);
-    }
-
-    T removeFirst() override {
-        return this->remove(0);
-    }
-
-    T removeLast() override {
-        return this->remove(this->size() - 1);
-    }
-
-    T getFirst() const override {
-        return this->get(0);
-    }
-
-    T getLast() const override {
-        return this->get(this->size() - 1);
     }
 
     bool isEmpty() const override {

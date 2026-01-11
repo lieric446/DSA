@@ -1,3 +1,5 @@
+#include <sstream>
+
 #include "ArrayList.hpp"
 
 template <typename T>
@@ -47,6 +49,17 @@ T ArrayList<T>::remove(int index) {
 }
 
 template <typename T>
+bool ArrayList<T>::removeElement(const T& element) {
+    for (int i = 0; i < currentSize; i++) {
+        if (data[i] == element) {
+            remove(i);
+            return true;
+        }
+    }
+    return false;
+}
+
+template <typename T>
 T ArrayList<T>::set(int index, const T& element) {
     this->checkIndex(index);
     T oldElement = data[index];
@@ -67,13 +80,14 @@ int ArrayList<T>::size() const {
 
 template <typename T>
 std::string ArrayList<T>::toString() const {
-    std::string result = "[";
+    std::stringstream ss;
+    ss << "[";
     for (int i = 0; i < currentSize; i++) {
-        result += std::to_string(data[i]);
+        ss << data[i];
         if (i < currentSize - 1) {
-            result += ", ";
+            ss << ", ";
         }
     }
-    result += "]";
-    return result;
+    ss << "]";
+    return ss.str();
 }

@@ -1,20 +1,24 @@
-#ifndef ARRAYLIST_HPP
-#define ARRAYLIST_HPP
+#ifndef LINKEDLIST_HPP
+#define LINKEDLIST_HPP
 
 #include "AbstractList.hpp"
 
 template <typename T>
-class ArrayList : public AbstractList<T> {
+class LinkedList : public AbstractList<T> {
 private:
-    T* data;
-    int capacity;
+    struct Node {
+        T data;
+        Node* next;
+        Node(const T& val) : data(val), next(nullptr) {}
+    };
+    Node* head;
+    Node* tail;
     int currentSize;
-    void increaseCapacity();
 
 public:
     using AbstractList<T>::add;
-    ArrayList(int initialCapacity = 10);
-    ~ArrayList();
+    LinkedList();
+    ~LinkedList();
     
     void add(int index, const T& element) override;
     T remove(int index) override;
@@ -25,6 +29,6 @@ public:
     std::string toString() const override;
 };
 
-#include "ArrayList.tpp"
+#include "LinkedList.tpp"
 
 #endif
