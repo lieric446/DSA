@@ -16,5 +16,5 @@ A lightweight repo to review data structures and algorithms (DSA) while learning
 - Greedy Algorithms
 
 ## Resources
-- Roughly based on data structures in Java
+- Roughly based on Oracle Java documentation
 
